@@ -1,0 +1,61 @@
+﻿@model LojaInformatica.Web.Models.modelCategoria
+@{
+    ViewBag.Title = "Editar Categoria";
+    Layout = "~/Views/Shared/_LayoutFuncionario_Gerente.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <div class="box">
+                <h2 class="text-center mb-5">Atualize uma Categoria</h2>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.cd_categoria)
+            <div class="main row mt-3">
+                <div class="col-lg-10">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.nm_categoria)
+                        @Html.EditorFor(model => model.nm_categoria, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nm_categoria, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-20">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.desc_categoria)
+                        @Html.EditorFor(model => model.desc_categoria, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.desc_categoria, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-5">
+                    <button type="submit" class="btn btn-primary w-100">Salvar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    }
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#celular").inputmask("mask", { "mask": "(99) 99999-9999" });
+            $("#cpf").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#cep").inputmask("mask", { "mask": "99999-999" });
+        });
+    </script>
+}
+@Scripts.Render("~/bundles/inputmask")

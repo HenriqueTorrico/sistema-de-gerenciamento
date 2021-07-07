@@ -1,0 +1,81 @@
+﻿@model LojaInformatica.Web.Models.modelFornecedor
+@{
+    ViewBag.Title = "Editar Fornecedor";
+    Layout = "~/Views/Shared/_LayoutFuncionario_Gerente.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <div class="box">
+                <h2 class="text-center mb-5">Atualize os dados do Fornecedor</h2>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(m => m.cd_fornecedor)
+                <div class="main row mt-3">
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.nm_fornecedor)
+                            @Html.EditorFor(m => m.nm_fornecedor, new { htmlAttributes = new { @class = "form-control", placeholder = "Ex: Mercado Livre" } })
+                            @Html.ValidationMessageFor(m => m.nm_fornecedor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.tel_fornecedor)
+                            @Html.EditorFor(m => m.tel_fornecedor, new { htmlAttributes = new { @class = "form-control", id = "telefone", placeholder = "(__) ____-____" } })
+                            @Html.ValidationMessageFor(x => x.tel_fornecedor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.cnpj_fornecedor)
+                            @Html.EditorFor(m => m.cnpj_fornecedor, new { htmlAttributes = new { @class = "form-control", id = "cnpj", placeholder = "__.___.___/____-__" } })
+                            @Html.ValidationMessageFor(x => x.cnpj_fornecedor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-0">
+                        @Html.LabelFor(m => m.cd_estado)
+                        @Html.EditorFor(m => m.cd_estado, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.cd_estado, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3 mt-3">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.cep_fornecedor)
+                            @Html.EditorFor(m => m.cep_fornecedor, new { htmlAttributes = new { @class = "form-control", id = "cep", placeholder = "_____-___" } })
+                            @Html.ValidationMessageFor(x => x.cep_fornecedor, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-3 mt-5">
+                        <button type="submit" class="btn btn-primary w-100">Salvar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#telefone").inputmask("mask", { "mask": "(99) 9999-9999" });
+            $("#cnpj").inputmask("mask", { "mask": "99.999.999/9999-99" }, { reverse: true });
+            $("#cep").inputmask("mask", { "mask": "99999-999" });
+        });
+    </script>
+}
+@Scripts.Render("~/bundles/inputmask")

@@ -1,0 +1,89 @@
+﻿@model LojaInformatica.Web.Models.modelProdutos
+@{
+    ViewBag.Title = "Editar Produto";
+    Layout = "~/Views/Shared/_LayoutFuncionario_Gerente.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <div class="box">
+                <h2 class="text-center mb-5">Atualize as informações do Produto</h2>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.cd_produto)
+            <div class="main row mt-3">
+                <div class="col-lg-3 mt-3">
+                    @Html.LabelFor(model => model.nm_produto)
+                    @Html.EditorFor(model => model.nm_produto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.nm_produto, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-3 mt-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.cd_fornecedor)
+                        @Html.EditorFor(model => model.cd_fornecedor, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.cd_fornecedor, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-3 mt-3">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.cd_categoria)
+                        @Html.EditorFor(model => model.cd_categoria, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.cd_categoria, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-3 mt-3">
+                    @Html.LabelFor(model => model.vl_produto)
+                    @Html.EditorFor(model => model.vl_produto, new { htmlAttributes = new { @class = "form-control", id = "valor" } })
+                    @Html.ValidationMessageFor(model => model.vl_produto, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-2 mt-3 mb-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.qt_produto)
+                        @Html.EditorFor(model => model.qt_produto, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.qt_produto, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-3 mt-3 mb-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.cd_fabricante)
+                        @Html.EditorFor(model => model.cd_fabricante, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.cd_fabricante, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-lg-5 mt-3">
+                    @Html.LabelFor(model => model.img_produto)
+                    @Html.EditorFor(model => model.img_produto, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.img_produto, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-3 mt-5">
+                    <button type="submit" class="btn btn-primary w-100">Salvar</button>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    }
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#valor").inputmask("mask", { "mask": "R$ 9.999,99" });
+        });
+    </script>
+}
+@Scripts.Render("~/bundles/inputmask")

@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de controle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link href="~/Content/Menu_Lateral.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="menu">
+        <div class="menu-wraper">
+            <div class="box-usuario">
+                    @if (Session["tipoGerente"] != null)
+                    {
+                        <div class="imagem-usuario">
+                            <img src="~/Imagens/Imagem Perfil.jpg" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="imagem-usuario">
+                            <img src="~/Imagens/Imagem Matheus.jpeg" />
+                        </div>
+                    }
+                <div class="nome-usuario">
+                    @if (Session["tipoGerente"] != null)
+                    {
+                        <p>Henrique</p>
+                        <p>Gerente</p>
+                    }
+                    else
+                    {
+                        <p>Matheus</p>
+                        <p>Funcionario</p>
+                    }
+                </div>
+            </div><!-- box-usuario -->
+
+            <div class="items-menu">
+
+                @if (Session["tipoGerente"] != null)
+                {
+                    <h2>Funcionário</h2>
+                    @Html.ActionLink("Cadastrar Funcionário", "cadFuncionario", "Funcionario")
+                    @Html.ActionLink("Consultar Funcionário", "listarFuncionario", "Funcionario")
+                }
+
+                <h2>Cliente</h2>
+                @Html.ActionLink("Cadastrar Cliente", "cadCliente", "Cliente")
+                @Html.ActionLink("Consultar Cliente", "listarCliente", "Cliente")
+
+                <h2>Categorias</h2>
+                @if (Session["tipoGerente"] != null)
+                {
+                    @Html.ActionLink("Cadastrar Categoria", "cadCategoria", "Categoria")
+                }
+                @Html.ActionLink("Consultar Categoria", "listarCategoria", "Categoria")
+
+                <h2>Fornecedores</h2>
+                @if (Session["tipoGerente"] != null)
+                {
+                    @Html.ActionLink("Cadastrar Fornecedor", "cadFornecedor", "Fornecedor")
+                }
+                @Html.ActionLink("Consultar Fornecedor", "listarFornecedor", "Fornecedor")
+
+                <h2>Fabricante</h2>
+                @if (Session["tipoGerente"] != null)
+                {
+                    @Html.ActionLink("Cadastrar Fabricante", "cadFabricante", "Fabricante")
+                }
+                @Html.ActionLink("Consultar Fabricante", "listarFabricante", "Fabricante")
+
+                <h2>Produtos</h2>
+                @if (Session["tipoGerente"] != null)
+                {
+                    @Html.ActionLink("Cadastrar Produto", "cadProduto", "Produtos")
+                }
+                @Html.ActionLink("Consultar Produto", "listarProduto", "Produtos")
+
+                <h2>Vendas</h2>
+                @Html.ActionLink("Efetuar uma venda", "cadVenda", "Vendas")
+                @Html.ActionLink("Consultar uma Venda", "listarVenda", "Vendas")
+
+            </div><!-- items-menu-->
+        </div><!-- menu-wraper -->
+    </div><!-- menu -->
+    <header>
+        <div class="center">
+            <div class="menu-btn">
+                <i class="fa fa-bars"></i>
+            </div><!-- menu-btn -->
+
+            <div class="btn-home">
+
+            </div><!-- btn-home-->
+
+            <div class="loggout">
+                <a href=""><i class="fa fa-home"></i>@Html.ActionLink("Inicio", "Index", "Home")</a>
+                <a href=""><i class="fa fa-window-close"></i>@Html.ActionLink("Sair", "Logout", "Login")</a>
+            </div><!--loggout-->
+            <div class="clear"></div>
+        </div><!--center-->
+    </header>
+    <div class="content">
+        @RenderBody()
+    </div><!-- content -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/inputmask")
+    @RenderSection("scripts", required: false)
+    <!-- <script src="~/Scripts/jquery.js"></script> -->
+    <script src="~/Scripts/main.js"></script>
+</body>
+</html>

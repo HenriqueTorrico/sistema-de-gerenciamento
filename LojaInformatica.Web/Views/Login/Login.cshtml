@@ -1,0 +1,47 @@
+﻿@model LojaInformatica.Web.Models.modelLogin
+
+@{ ViewBag.Title = "Login";
+    Layout = null;}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Login.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blue">
+        <h1>InfoShop</h1>
+    </div>
+    
+        <div class="forms-login">
+            <div class="form">
+                <h2>Login</h2>
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
+                    <div class="inputs">
+
+                        <div class="input-email">
+                            @Html.EditorFor(x => x.nm_login, new { htmlAttributes = new { id = "txtUsuario", senha = "txtUsuario", type = "text", @class = "input", required = "required", maxlength = "30" } })
+                            @Html.ValidationMessageFor(x => x.nm_login, "", new { @class = "text-danger" })
+                            <div class="linha"></div>
+                            <label for="">Email</label>
+                        </div>
+
+                        <div class="input-senha">
+                            @Html.EditorFor(x => x.sh_login, new { htmlAttributes = new { id = "txtSenha", senha = "txtSenha", type = "password", @class = "input", required = "required", maxlength = "20" } })
+                            @Html.ValidationMessageFor(x => x.sh_login, "", new { @class = "text-danger" })
+                            <div class="linha"></div>
+                            <label for="">Senha</label>
+                        </div>
+                    </div>
+
+                    <a><input type="submit" value="Entrar"></a>
+                }
+            </div>             
+        </div>
+    </body>
+</html>

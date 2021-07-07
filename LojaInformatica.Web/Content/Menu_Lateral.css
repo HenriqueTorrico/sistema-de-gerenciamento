@@ -1,0 +1,208 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto";
+}
+
+html,
+body {
+    height: 100%;
+    background: rgba(224, 230, 238, 0.49);
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.clear{
+    clear: both;
+}
+
+.center{
+    padding: 0 2%;
+    margin: 0 auto;
+}
+
+.menu-wraper {
+    width: 250px;
+}
+
+.menu {
+    overflow-x: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    height: 100%;
+    float: left;
+    width: 260px;
+    background: #213550;
+    padding: 10px 0;
+}
+
+header {
+    position: relative;
+    left: 259px;
+    padding: 10px 0;
+    background: #213550;
+    width: calc(100% - 250px);
+}
+
+.loggout {
+    float: right;
+}
+
+    .loggout a {
+        position: relative;
+        left: 0;
+        top: 2px;
+        padding: 0 15px;
+        text-decoration: none;
+        color: white;
+        font-size: 17px;
+    }
+
+.menu-btn {
+    float: left;
+    cursor: pointer;
+    font-size: 23px;
+    color: white;
+}
+
+.box-usuario {
+    text-align: center;
+}
+
+.avatar-usuario {
+    margin-top: 2rem;
+    text-align: left;
+    display: inline-block;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 2px solid #c8c8c8;
+}
+
+    .avatar-usuario i {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 50px;
+        color: #c8c8c8;
+    }
+
+.imagem-usuario {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    display: inline-block;
+    border: 3px solid #2f3d42;
+    border-radius: 50%;
+}
+
+    .imagem-usuario img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+.nome-usuario {
+    text-align: center;
+    margin-top: 10px;
+}
+
+    .nome-usuario p {
+        color: white;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+/*Coteudo principal do painel*/
+
+.w100 {
+    width: 100%;
+}
+
+.w50 {
+    width: 49%;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.content {
+    padding: 2%;
+    width: calc(100% - 250px);
+    position: relative;
+    left: 250px;
+}
+
+.box-content {
+    background: white;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+    .box-content h2 {
+        font-weight: 400;
+        font-size: 23px;
+    }
+
+.items-menu {
+    margin-top: 30px;
+}
+
+    .items-menu h2 {
+        text-align: left;
+        font-family: "Roboto", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        margin-bottom: 0.5rem;
+        margin-left: 1rem;
+        color: #fff;
+    }
+
+    .items-menu a {
+        display: block;
+        text-align: left;
+        font-weight: 300;
+        font-size: 16px;
+        text-decoration: none;
+        padding: 8px;
+        color: #dcdcdc;
+        padding-left: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .items-menu a:hover {
+        background-color: #4577B1;
+        color: #fff; 
+    }
+
+.box {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    box-shadow: 1px 1px 11px rgba(0, 0, 0, 0.3);
+    padding: 2%;
+}
+
+    .box h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .box .edit > a {
+        text-decoration: none;
+    }

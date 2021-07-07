@@ -1,0 +1,101 @@
+﻿@model LojaInformatica.Web.Models.modelFuncionario
+@{
+    ViewBag.Title = "Cadastro de Funcionário";
+    Layout = "~/Views/Shared/_LayoutFuncionario_Gerente.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <div class="box">
+            @using (Html.BeginForm("cadFuncionario", "Funcionario", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <h2 class="text-center mb-5">Cadastro de Funcionário</h2>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(m => m.cd_funcionario)
+                <div class="main row mt-3">
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.nm_funcionario)
+                            @Html.EditorFor(m => m.nm_funcionario, new { htmlAttributes = new { @class = "form-control", placeholder = "Ex: Leonardo", required = "required" } })
+                            @Html.ValidationMessageFor(m => m.nm_funcionario, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ida_funcionario)
+                            @Html.EditorFor(m => m.ida_funcionario, new { htmlAttributes = new { @class = "form-control", placeholder = "Ex: 17", required = "required" } })
+                            @Html.ValidationMessageFor(m => m.ida_funcionario, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.cpf_funcionario)
+                            @Html.EditorFor(m => m.cpf_funcionario, new { htmlAttributes = new { @class = "form-control", id = "cpf", placeholder = "___.___.___-__", required = "required" } })
+                            @Html.ValidationMessageFor(m => m.cpf_funcionario, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-0">
+                        @Html.LabelFor(m => m.cd_genero)
+                        @Html.DropDownList("genero", null, "Escolha o Genêro", new { @class = "form-select", required = "required" })
+                        @Html.ValidationMessageFor(m => m.cpf_funcionario, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-3 mt-3">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.cel_funcionario)
+                            @Html.EditorFor(m => m.cel_funcionario, new { htmlAttributes = new { @class = "form-control", id = "celular", placeholder = "(__) _____-____", required = "required" } })
+                            @Html.ValidationMessageFor(m => m.cel_funcionario, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2 mt-3">
+                        @Html.LabelFor(m => m.cep_funcionario)
+                        @Html.EditorFor(m => m.cep_funcionario, new { htmlAttributes = new { @class = "form-control", id = "cep", placeholder = "_____-___", required = "required" } })
+                        @Html.ValidationMessageFor(m => m.cep_funcionario, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-6 mt-3 mb-4">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.eml_funcionario)
+                            @Html.EditorFor(m => m.eml_funcionario, new { htmlAttributes = new { @class = "form-control", placeholder = "Ex: henrique@gmail.com", required = "required" } })
+                            @Html.ValidationMessageFor(m => m.eml_funcionario, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-3 mt-5">
+                        <button type="submit" class="btn btn-primary w-100">Cadastrar Funcionário</button>
+                    </div>
+                    <div class="col-lg-3 mt-5">
+                        <button type="reset" class="btn btn-danger w-100">Limpar</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+</body>
+</html>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#celular").inputmask("mask", { "mask": "(99) 99999-9999" });
+            $("#cpf").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#cep").inputmask("mask", { "mask": "99999-999" });
+        });
+    </script>
+}
+@Scripts.Render("~/bundles/inputmask")
+
+@ViewBag.confCadastro
+

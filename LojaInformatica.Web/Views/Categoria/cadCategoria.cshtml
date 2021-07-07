@@ -1,0 +1,50 @@
+﻿@model LojaInformatica.Web.Models.modelCategoria
+@{
+    ViewBag.Title = "Cadastro de Categoria";
+    Layout = "~/Views/Shared/_LayoutFuncionario_Gerente.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <div class="box">
+            @using (Html.BeginForm("cadCategoria", "Categoria", FormMethod.Post))
+            {
+                <h2 class="text-center mb-5">Cadastro de Categoria</h2>
+                <div class="main row mt-3">
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.nm_categoria)
+                            @Html.EditorFor(m => m.nm_categoria, new { htmlAttributes = new { @class = "form-control", placeholder = "Ex: Monitores", required = "required" } })
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.desc_categoria)
+                            @Html.EditorFor(m => m.desc_categoria, new { htmlAttributes = new { @class = "form-control", placeholder = "Ex: Somente monitores poderão ser registrados nessa categoria", required = "required" } })
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 mt-5">
+                        <button type="submit" class="btn btn-primary w-100">Cadastrar Categoria</button>
+                    </div>
+                    <div class="col-lg-3 mt-5">
+                        <button type="reset" class="btn btn-danger w-100">Limpar</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+</body>
+</html>
+
+@ViewBag.confCadastro
